@@ -14,13 +14,13 @@
 
 VENDOR_PATH := vendor/custom/prebuilts
 
-TARGET_BUILD_MIUI_CAMERA ?= true
+TARGET_BUILD_MIUI_CAMERA ?= false
 ifeq ($(strip $(TARGET_BUILD_MIUI_CAMERA)),true)
     # Inherit from MiuiCamera
     $(call inherit-product, vendor/custom/prebuilts/MiuiCamera/config.mk)
 endif
 
-TARGET_BUILD_CAMERAGO ?= true
+TARGET_BUILD_CAMERAGO ?= false
 ifeq ($(strip $(TARGET_BUILD_CAMERAGO)),true)
 PRODUCT_PACKAGES += \
     CameraGo
