@@ -14,12 +14,20 @@
 
 VENDOR_PATH := vendor/custom/prebuilts
 
-# CAMERA
-ifeq ($(WITH_MIUICAM),true)
-# Inherit from MiuiCamera
-$(call inherit-product, vendor/custom/prebuilts/MiuiCamera/config.mk)
-else
-# Include CameraGo
+TARGET_BUILD_MIUI_CAMERA ?= true
+ifeq ($(strip $(TARGET_BUILD_MIUI_CAMERA)),true)
+    # Inherit from MiuiCamera
+    $(call inherit-product, vendor/custom/prebuilts/MiuiCamera/config.mk)
+endif
+
+TARGET_BUILD_CAMERAGO ?= true
+ifeq ($(strip $(TARGET_BUILD_CAMERAGO)),true)
 PRODUCT_PACKAGES += \
     CameraGo
+endif
+
+TARGET_BUILD_GRAPHENEOS_CAMERA ?= true
+ifeq ($(strip $(TARGET_BUILD_GRAPHENEOS_CAMERA)),true)
+PRODUCT_PACKAGES += \
+    GrapheneCamera
 endif
